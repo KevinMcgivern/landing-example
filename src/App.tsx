@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Play, Pause, Settings, Zap, Palette, Volume2, VolumeX } from 'lucide-react';
+import { Play, Pause, Settings, Zap, Volume2, VolumeX } from 'lucide-react';
 
 interface MatrixRainProps {
   isPlaying: boolean;
@@ -241,13 +241,46 @@ function App() {
       />
       
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-6xl md:text-8xl font-mono font-bold text-green-400 mb-4 animate-pulse">
-            MATRIX
-          </h1>
-          <p className="text-green-400/80 font-mono text-lg md:text-xl">
-            Welcome to the simulation
-          </p>
+        <div className="text-center px-6 max-w-4xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-mono font-bold text-green-400 mb-6 animate-pulse">
+              ENTER THE MATRIX
+            </h1>
+            <p className="text-green-400/90 font-mono text-xl md:text-2xl mb-8 leading-relaxed">
+              Experience the ultimate digital reality where code comes alive and reality bends to your will
+            </p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <button className="group px-8 py-4 bg-green-500/20 border-2 border-green-400 rounded-lg hover:bg-green-500/30 transition-all duration-300 transform hover:scale-105">
+              <span className="text-green-400 font-mono text-lg flex items-center gap-2">
+                <Zap className="w-5 h-5 group-hover:animate-pulse" />
+                INITIATE SEQUENCE
+              </span>
+            </button>
+            
+            <button className="group px-8 py-4 bg-transparent border-2 border-green-400/50 rounded-lg hover:border-green-400 hover:bg-green-400/10 transition-all duration-300 transform hover:scale-105">
+              <span className="text-green-400/80 font-mono text-lg flex items-center gap-2">
+                <Settings className="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" />
+                CUSTOMIZE
+              </span>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            <div className="text-center p-4 bg-black/40 rounded-lg border border-green-500/20">
+              <div className="text-green-400 font-mono text-2xl font-bold mb-2">∞</div>
+              <div className="text-green-400/70 font-mono text-sm">ENDLESS POSSIBILITIES</div>
+            </div>
+            <div className="text-center p-4 bg-black/40 rounded-lg border border-green-500/20">
+              <div className="text-green-400 font-mono text-2xl font-bold mb-2">24/7</div>
+              <div className="text-green-400/70 font-mono text-sm">ALWAYS ACTIVE</div>
+            </div>
+            <div className="text-center p-4 bg-black/40 rounded-lg border border-green-500/20">
+              <div className="text-green-400 font-mono text-2xl font-bold mb-2">100%</div>
+              <div className="text-green-400/70 font-mono text-sm">IMMERSIVE</div>
+            </div>
+          </div>
         </div>
       </div>
 
