@@ -1,3 +1,246 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom Matrix Rain Styles */
+@layer base {
+  :root {
+    --matrix-green: #00ff00;
+    --matrix-cyan: #00ffff;
+    --matrix-magenta: #ff00ff;
+    --matrix-red: #ff0000;
+    --matrix-yellow: #ffff00;
+    --matrix-white: #ffffff;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+    background: #000;
+    color: var(--matrix-green);
+    overflow: hidden;
+    cursor: none;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+@layer components {
+  /* Custom Slider Styles */
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #374151;
+    outline: none;
+    border-radius: 4px;
+    height: 6px;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: currentColor;
+    cursor: pointer;
+    box-shadow: 0 0 10px currentColor;
+    transition: all 0.2s ease;
+  }
+
+  .slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px currentColor;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: currentColor;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px currentColor;
+  }
+
+  /* Matrix Text Glow */
+  .matrix-glow {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+
+  /* Custom Cursor */
+  .custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--matrix-green);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+  }
+
+  /* Animations */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-delay {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes matrix-rain {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  @keyframes glitch {
+    0%, 100% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  .animate-fade-in-delay {
+    animation: fade-in-delay 2s ease-out;
+  }
+
+  .animate-matrix-rain {
+    animation: matrix-rain linear infinite;
+  }
+
+  .animate-glitch {
+    animation: glitch 0.3s infinite;
+  }
+
+  /* Utility Classes */
+  .backdrop-blur-custom {
+    backdrop-filter: blur(8px);
+  }
+
+  .matrix-border {
+    border: 1px solid;
+    border-image: linear-gradient(45deg, var(--matrix-green), var(--matrix-cyan)) 1;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 8px currentColor;
+  }
+
+  .box-glow {
+    box-shadow: 0 0 20px currentColor;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .control-panel {
+    width: 90vw !important;
+    max-width: 320px;
+  }
+  
+  .matrix-title {
+    font-size: 3rem;
+  }
+}
+
+/* High DPI Display Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #000000;
+    --bg-secondary: #111111;
+    --text-primary: #00ff00;
+    --text-secondary: #00cc00;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .matrix-rain {
+    display: none !important;
+  }
+}
