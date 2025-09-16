@@ -1,0 +1,1 @@
+                    onClick={() => setActiveTab(id as 'controls' | 'themes' | 'advanced')}
