@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --matrix-green: #00ff00;
+  --matrix-green-dark: #008800;
+  --matrix-cyan: #00ffff;
+  --matrix-purple: #ff00ff;
+  --matrix-red: #ff4400;
+  --matrix-blue: #0088ff;
+  --matrix-black: #000000;
+  --matrix-dark-gray: #111111;
+  --matrix-gray: #333333;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--matrix-green-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--matrix-green);
+}
+
+/* Custom Slider Styles */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #008800 0%, #00ff00 100%);
+  outline: none;
+  border-radius: 5px;
+  height: 6px;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--matrix-green);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background: #40ff40;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--matrix-green);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* Custom Animations */
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes matrix-glow {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--matrix-green), 0 0 10px var(--matrix-green), 0 0 15px var(--matrix-green);
+  }
+  50% {
+    text-shadow: 0 0 10px var(--matrix-green), 0 0 20px var(--matrix-green), 0 0 30px var(--matrix-green);
+  }
+}
+
+@keyframes matrix-glitch {
+  0%, 100% {
+    transform: translateX(0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translateX(-2px);
+    filter: hue-rotate(90deg);
+  }
+  40% {
+    transform: translateX(2px);
+    filter: hue-rotate(-90deg);
+  }
+  60% {
+    transform: translateX(-1px);
+    filter: hue-rotate(45deg);
+  }
+  80% {
+    transform: translateX(1px);
+    filter: hue-rotate(-45deg);
+  }
+}
+
+@keyframes matrix-scan {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+/* Utility Classes */
+.matrix-fall {
+  animation: matrix-fall linear infinite;
+}
+
+.matrix-glow {
+  animation: matrix-glow 2s ease-in-out infinite;
+}
+
+.matrix-glitch {
+  animation: matrix-glitch 0.3s ease-in-out;
+}
+
+.matrix-scan {
+  animation: matrix-scan 3s ease-in-out infinite;
+}
+
+/* Glassmorphism Effects */
+.glass {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+.glass-strong {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+/* Particle Effects */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.particle-green {
+  background: radial-gradient(circle, var(--matrix-green) 0%, transparent 70%);
+  box-shadow: 0 0 10px var(--matrix-green);
+}
+
+.particle-cyan {
+  background: radial-gradient(circle, var(--matrix-cyan) 0%, transparent 70%);
+  box-shadow: 0 0 10px var(--matrix-cyan);
+}
+
+.particle-purple {
+  background: radial-gradient(circle, var(--matrix-purple) 0%, transparent 70%);
+  box-shadow: 0 0 10px var(--matrix-purple);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .matrix-hero-title {
+    font-size: 3rem;
+  }
+  
+  .control-panel {
+    width: 90vw;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .matrix-hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .control-panel {
+    width: 95vw;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --matrix-green: #40ff40;
+    --matrix-cyan: #40ffff;
+    --matrix-purple: #ff40ff;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus Styles */
+.focus-visible {
+  outline: 2px solid var(--matrix-green);
+  outline-offset: 2px;
+}
+
+/* Custom Selection */
+::selection {
+  background: var(--matrix-green);
+  color: var(--matrix-black);
+}
+
+/* Loading States */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
